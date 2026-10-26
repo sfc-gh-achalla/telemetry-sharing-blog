@@ -603,7 +603,7 @@ data_dictionary:
 usage_examples:
   - title: "Error rate by customer, last 7 days"
     description: "Find the customers with the most errors this week."
-    query: "SELECT customer_id, COUNT_IF(event_type = 'ERROR') / COUNT(*) AS error_rate FROM PUBLISH.V_FLEET_EVENTS WHERE event_timestamp >= DATEADD(day, -7, CURRENT_TIMESTAMP()) GROUP BY customer_id ORDER BY error_rate DESC;"
+    query: "SELECT customer_id, COUNT_IF(event_type = 'ERROR') / COUNT(*) AS error_rate_of_all_events FROM PUBLISH.V_FLEET_EVENTS WHERE event_timestamp >= DATEADD(day, -7, CURRENT_TIMESTAMP()) GROUP BY customer_id ORDER BY error_rate_of_all_events DESC;"
   - title: "Average latency by app version"
     description: "Compare performance across releases."
     query: "SELECT app_version, AVG(metric_value) AS avg_latency_ms FROM PUBLISH.V_FLEET_EVENTS WHERE event_type = 'LATENCY' GROUP BY app_version ORDER BY app_version;"
@@ -680,7 +680,7 @@ data_dictionary:
 usage_examples:
   - title: "Error rate by office, last 7 days"
     description: "Find the offices with the most errors this week."
-    query: "SELECT office, COUNT_IF(event_type = 'ERROR') / COUNT(*) AS error_rate FROM PUBLISH.V_CUSTOMER_EVENTS WHERE event_timestamp >= DATEADD(day, -7, CURRENT_TIMESTAMP()) GROUP BY office ORDER BY error_rate DESC;"
+    query: "SELECT office, COUNT_IF(event_type = 'ERROR') / COUNT(*) AS error_rate_of_all_events FROM PUBLISH.V_CUSTOMER_EVENTS WHERE event_timestamp >= DATEADD(day, -7, CURRENT_TIMESTAMP()) GROUP BY office ORDER BY error_rate_of_all_events DESC;"
   - title: "Adoption of each app version"
     description: "See how many devices run each release."
     query: "SELECT app_version, COUNT(DISTINCT device_id) AS devices FROM PUBLISH.V_CUSTOMER_EVENTS GROUP BY app_version ORDER BY devices DESC;"
@@ -694,8 +694,6 @@ data_attributes:
       time_frame: LAST
       units: DAYS
       value: 90
-data_preview:
-  has_pii: FALSE
 resharing:
   enabled: false
 $$;
@@ -743,7 +741,7 @@ data_dictionary:
 usage_examples:
   - title: "Error rate by office, last 7 days"
     description: "Find the offices with the most errors this week."
-    query: "SELECT office, COUNT_IF(event_type = 'ERROR') / COUNT(*) AS error_rate FROM PUBLISH.V_CUSTOMER_EVENTS WHERE event_timestamp >= DATEADD(day, -7, CURRENT_TIMESTAMP()) GROUP BY office ORDER BY error_rate DESC;"
+    query: "SELECT office, COUNT_IF(event_type = 'ERROR') / COUNT(*) AS error_rate_of_all_events FROM PUBLISH.V_CUSTOMER_EVENTS WHERE event_timestamp >= DATEADD(day, -7, CURRENT_TIMESTAMP()) GROUP BY office ORDER BY error_rate_of_all_events DESC;"
   - title: "Adoption of each app version"
     description: "See how many devices run each release."
     query: "SELECT app_version, COUNT(DISTINCT device_id) AS devices FROM PUBLISH.V_CUSTOMER_EVENTS GROUP BY app_version ORDER BY devices DESC;"
@@ -757,8 +755,6 @@ data_attributes:
       time_frame: LAST
       units: DAYS
       value: 90
-data_preview:
-  has_pii: FALSE
 resharing:
   enabled: false
 $$;
@@ -806,7 +802,7 @@ data_dictionary:
 usage_examples:
   - title: "Error rate by office, last 7 days"
     description: "Find the offices with the most errors this week."
-    query: "SELECT office, COUNT_IF(event_type = 'ERROR') / COUNT(*) AS error_rate FROM PUBLISH.V_CUSTOMER_EVENTS WHERE event_timestamp >= DATEADD(day, -7, CURRENT_TIMESTAMP()) GROUP BY office ORDER BY error_rate DESC;"
+    query: "SELECT office, COUNT_IF(event_type = 'ERROR') / COUNT(*) AS error_rate_of_all_events FROM PUBLISH.V_CUSTOMER_EVENTS WHERE event_timestamp >= DATEADD(day, -7, CURRENT_TIMESTAMP()) GROUP BY office ORDER BY error_rate_of_all_events DESC;"
   - title: "Adoption of each app version"
     description: "See how many devices run each release."
     query: "SELECT app_version, COUNT(DISTINCT device_id) AS devices FROM PUBLISH.V_CUSTOMER_EVENTS GROUP BY app_version ORDER BY devices DESC;"
@@ -820,8 +816,6 @@ data_attributes:
       time_frame: LAST
       units: DAYS
       value: 90
-data_preview:
-  has_pii: FALSE
 resharing:
   enabled: false
 $$;
